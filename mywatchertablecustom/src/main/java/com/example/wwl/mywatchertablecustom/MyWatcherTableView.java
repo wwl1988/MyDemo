@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -45,12 +44,18 @@ public class MyWatcherTableView extends View {
      */
     private int mCircleColor;
     /**
+     * 折线的宽度
+     */
+    private float broken_line_width;
+    /**
      * 圆的画笔
      */
     private Paint mCirclePaint;
-
+    //x坐标轴数据，demo为写死
     private String[] xCoordinateTextStringArray = new String[]{"02", "03", "04", "05", "06", "07", "08"};
+    //y坐标轴数据，demo为写死
     private String[] yCoordinateTextStringArray = new String[]{"66", "67", "68", "74", "77", "128", "98"};
+    //转化为int型数组，方便计算
     private int[] yCoordinateTextIntArray = new int[yCoordinateTextStringArray.length];
     private int yMin;//假定用户数据都大于0
     private int yUserMax;//用户的最大动态数值
@@ -74,25 +79,27 @@ public class MyWatcherTableView extends View {
 
         mCircleRadius = typedArray.getDimension(R.styleable.MyWatcherTableView_circle_radius, Utils.dip2px(context, 4));
         mCircleColor = typedArray.getColor(R.styleable.MyWatcherTableView_circle_color, Color.BLUE);
+        broken_line_width = typedArray.getDimension(R.styleable.MyWatcherTableView_broken_line_width, Utils.dip2px(context, 2));
 
         //注意回收
         typedArray.recycle();
-        //设置画笔
+        //xy轴及文字画笔
         mXYPaint = new Paint();
         mXYPaint.setStrokeWidth(mCoordinateWitdh);
         mXYPaint.setColor(mCoordinateColor);
         mXYPaint.setAntiAlias(true);
         mXYPaint.setTextSize(mCoordinateTextSize);
-
+        //坐标轴中的折线的画笔
         mCirclePaint = new Paint();
         mCirclePaint.setAntiAlias(true);
         mCirclePaint.setColor(mCircleColor);
         mCirclePaint.setStyle(Paint.Style.FILL);
+        mCirclePaint.setStrokeWidth(broken_line_width);
         //将动态的String数据转化为int型数据
         for (int i = 0; i < yCoordinateTextStringArray.length; i++) {
             yCoordinateTextIntArray[i] = Integer.parseInt(yCoordinateTextStringArray[i]);
             //获取动态数据的最小值
-            if( i == 0){
+            if (i == 0) {
                 yMin = yCoordinateTextIntArray[0];
                 yUserMax = yCoordinateTextIntArray[0];
             } else {
@@ -115,13 +122,13 @@ public class MyWatcherTableView extends View {
         int width;
         int height;
 
-        if(measureWidthMode == MeasureSpec.EXACTLY){
+        if (measureWidthMode == MeasureSpec.EXACTLY) {
             width = measureWidthSize;
         } else {
             width = Utils.dip2px(context, 300);
         }
 
-        if(measureHeightMode == MeasureSpec.EXACTLY){
+        if (measureHeightMode == MeasureSpec.EXACTLY) {
             height = measureHeightSize;
         } else {
             height = Utils.dip2px(context, 240);
@@ -143,7 +150,8 @@ public class MyWatcherTableView extends View {
 
     /**
      * 绘制xy轴坐标
-     * @param canvas
+     *
+     * @param canvas 画布
      */
     private void drawXYCoordinate(Canvas canvas) {
         //绘制y轴
@@ -157,11 +165,11 @@ public class MyWatcherTableView extends View {
         canvas.drawLine(getPaddingLeft() - 15,
                 getPaddingTop() + 30,
                 getPaddingLeft(),
-                getPaddingTop(),mXYPaint);
+                getPaddingTop(), mXYPaint);
         canvas.drawLine(getPaddingLeft() + 15,
                 getPaddingTop() + 30,
                 getPaddingLeft(),
-                getPaddingTop(),mXYPaint);
+                getPaddingTop(), mXYPaint);
         //绘制x轴
         canvas.drawLine(getPaddingLeft(),
                 getHeight() - getPaddingTop() - getPaddingBottom(),
@@ -183,16 +191,9 @@ public class MyWatcherTableView extends View {
     }
 
     /**
-     * x轴等分
-     */
-    private int xScale;
-    /**
-     * y轴等分
-     */
-    private double yScale;
-    /**
-     *  绘制xy轴坐标刻度文字
-     * @param canvas
+     * 绘制xy轴坐标刻度文字 及轴线、圆圈
+     *
+     * @param canvas 画布
      */
     private void drawXYCoordinateText(Canvas canvas) {
         //x轴
@@ -200,7 +201,7 @@ public class MyWatcherTableView extends View {
         int xLength = getWidth() - getPaddingRight() - getPaddingLeft() - 50;
         Rect bound = new Rect();
         //x轴单位刻度对应长度
-        xScale = (int) Math.ceil(xLength / xCoordinateTextStringArray.length);
+        int xScale = (int) Math.ceil(xLength / xCoordinateTextStringArray.length);
         for (int i = 0; i < xCoordinateTextStringArray.length; i++) {
             //绘制刻度
             canvas.drawLine(getPaddingLeft() + i * xScale,
@@ -221,9 +222,9 @@ public class MyWatcherTableView extends View {
         //y轴长度  分四段
         int yLength = getHeight() - getPaddingTop() * 2 - getPaddingBottom() - 50;
         //y轴达内长度对应长度
-        yScale = yLength  * 1.0 / (yUserMax - yMin);
+        double yScale = yLength * 1.0 / (yUserMax - yMin);
         //绘制4等分线
-        for (int i = 0; i < 5 ; i++) {
+        for (int i = 0; i < 5; i++) {
             //绘制y轴刻度
             canvas.drawLine(getPaddingLeft(),
                     getHeight() - getPaddingTop() - getPaddingBottom() - i * yLength / 4,
@@ -231,35 +232,37 @@ public class MyWatcherTableView extends View {
                     getHeight() - getPaddingTop() - getPaddingBottom() - i * yLength / 4,
                     mXYPaint);
             //绘制y轴等分文字
-            String dividerIntLength = String.valueOf(i * (yUserMax - yMin)/ 4 + yMin);
+            String dividerIntLength = String.valueOf(i * (yUserMax - yMin) / 4 + yMin);
             mXYPaint.getTextBounds(dividerIntLength, 0, dividerIntLength.length(), bound);
             canvas.drawText(dividerIntLength,
                     getPaddingLeft() - bound.width() - 30,
-                    getHeight() - getPaddingTop() - getPaddingBottom() - i * yLength / 4  + bound.height() / 2,
+                    getHeight() - getPaddingTop() - getPaddingBottom() - i * yLength / 4 + bound.height() / 2,
                     mXYPaint);
         }
 
         //绘制坐标轴中的曲线
         for (int i = 0; i < yCoordinateTextIntArray.length - 1; i++) {
             canvas.drawLine(getPaddingLeft() + i * xScale,
-                    (int)(getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin)),
+                    (int) (getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin)),
                     getPaddingLeft() + (i + 1) * xScale,
-                    (int)(getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i + 1] - yMin)),
-                    mXYPaint);
+                    (int) (getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i + 1] - yMin)),
+                    mCirclePaint);
         }
         //绘制圆点
         for (int i = 0; i < yCoordinateTextIntArray.length; i++) {
-            mCirclePaint.setColor(mCircleColor);
             canvas.drawCircle(getPaddingLeft() + i * xScale,
-                    (int)(getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin)), mCircleRadius, mCirclePaint);
+                    (int) (getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin)),
+                    mCircleRadius, mCirclePaint);
             mCirclePaint.setColor(Color.WHITE);
             canvas.drawCircle(getPaddingLeft() + i * xScale,
-                    (int)(getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin)), mCircleRadius - 5, mCirclePaint);
+                    (int) (getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin)),
+                    mCircleRadius - 5, mCirclePaint);
+            mCirclePaint.setColor(mCircleColor);
             //绘制圆点上的数值
             mXYPaint.getTextBounds(yCoordinateTextStringArray[i], 0, yCoordinateTextStringArray[i].length(), bound);
             canvas.drawText(yCoordinateTextStringArray[i],
-                    getPaddingLeft() + i * xScale - bound.width() / 2 ,
-                    (int)(getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin) - mCircleRadius / 2 - 15),
+                    getPaddingLeft() + i * xScale - bound.width() / 2,
+                    (int) (getHeight() - getPaddingTop() - getPaddingBottom() - yScale * (yCoordinateTextIntArray[i] - yMin) - mCircleRadius / 2 - 15),
                     mXYPaint);
         }
 

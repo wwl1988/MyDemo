@@ -7,6 +7,7 @@
         <attr name="coordinate_text_size" />
         <attr name="circle_radius" />
         <attr name="circle_color" />
+        <attr name="broken_line_width" />
 
     </declare-styleable>
 
@@ -15,6 +16,7 @@
     <attr name="coordinate_text_size" format="dimension" />
     <attr name="circle_radius" format="dimension" />
     <attr name="circle_color" format="color" />
+    <attr name="broken_line_width" format="dimension" />
 
     
 </resources>
