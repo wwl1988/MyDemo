@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyWatcherTableCustom</string>
+    <string name="my_watch_table_title">一周心率数据：</string>
 </resources>

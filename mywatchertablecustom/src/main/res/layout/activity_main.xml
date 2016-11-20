@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.example.wwl.mywatchertablecustom.MainActivity">
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="一周心率数据："
-        android:textSize="20sp"
+        android:padding="@dimen/my_watch_table_text_margin"
+        android:text="@string/my_watch_table_title"
         android:textColor="@color/circle_color"
-        android:textStyle="bold"
-        android:padding="20dp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <com.example.wwl.mywatchertablecustom.MyWatcherTableView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingBottom="30dp"
-        app:coordinate_color="@color/coordinate_text_color"
-        app:coordinate_width="2dp"
-        app:coordinate_text_size="13sp"
+        android:paddingBottom="@dimen/my_watch_table_margin"
+        android:paddingLeft="@dimen/my_watch_table_margin"
+        app:broken_line_width="@dimen/coordinate_width"
         app:circle_color="@color/circle_color"
-        app:circle_radius="5dp"
-        app:broken_line_width="2dp"/>
+        app:circle_radius="@dimen/circle_radius"
+        app:coordinate_color="@color/coordinate_text_color"
+        app:coordinate_text_size="@dimen/coordinate_text_size"
+        app:coordinate_width="@dimen/coordinate_width" />
 
 </LinearLayout>
