@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="MyWatcherTableView" >
+        <attr name="coordinate_width" />
+        <attr name="coordinate_color" />
+        <attr name="coordinate_text_size" />
+        <attr name="circle_radius" />
+        <attr name="circle_color" />
+
+    </declare-styleable>
+
+    <attr name="coordinate_width" format="dimension" />
+    <attr name="coordinate_color" format="color" />
+    <attr name="coordinate_text_size" format="dimension" />
+    <attr name="circle_radius" format="dimension" />
+    <attr name="circle_color" format="color" />
+
+    
+</resources>
