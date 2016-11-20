@@ -1,0 +1,11 @@
+Q：
+RecyclerView的
+1、onBindViewHolder222 与 onBindViewHolder333
+2、onCreateViewHolder默认会多缓存2item3、
+
+ListView
+1、getView会初始化4次
+2、inflate与RecyclerView的不同
+
+main.xml
+2、RelativeLayout会绘制4次，Linearlayout绘制2次
