@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/myrecyclerviewdemo/myrecyclerviewdemo.iml" filepath="$PROJECT_DIR$/myrecyclerviewdemo/myrecyclerviewdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mywatchertablecustom/mywatchertablecustom.iml" filepath="$PROJECT_DIR$/mywatchertablecustom/mywatchertablecustom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewserver/viewserver.iml" filepath="$PROJECT_DIR$/viewserver/viewserver.iml" />
     </modules>
   </component>
 </project>

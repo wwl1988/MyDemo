@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/myrecyclerviewdemo" />
             <option value="$PROJECT_DIR$/mywatchertablecustom" />
+            <option value="$PROJECT_DIR$/viewserver" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

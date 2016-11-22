@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.debug.hv.ViewServer;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button bt_rv, bt_lv;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         bt_rv.setOnClickListener(this);
         bt_lv.setOnClickListener(this);
-
+        ViewServer.get(this).addWindow(this);
     }
 
     @Override
@@ -34,5 +36,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ViewServer.get(this).removeWindow(this);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ViewServer.get(this).setFocusedWindow(this);
+    }
 }

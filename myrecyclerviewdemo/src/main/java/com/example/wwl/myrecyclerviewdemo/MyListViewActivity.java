@@ -16,7 +16,6 @@ public class MyListViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_list_view);
         mLV = (ListView) findViewById(R.id.lv);
-
         mLV.setAdapter(new MyListViewAdapter(this, initData(), mLV));
 
     }

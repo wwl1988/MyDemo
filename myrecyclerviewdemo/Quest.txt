@@ -1,11 +1,26 @@
 Q：
 RecyclerView的
-1、onBindViewHolder222 与 onBindViewHolder333
-2、onCreateViewHolder默认会多缓存2item3、
+1、onBindViewHolder222 与 onBindViewHolder333？？
+    得熟悉源码，未完成。
+2、onCreateViewHolder默认会多缓存2item？？
+    根据查资料发现：单一item时，会多缓存2item；当大于2个类型的item时，单个item数会等于屏幕可见item数+1;
 
-ListView
-1、getView会初始化4次
-2、inflate与RecyclerView的不同
+ListViewitem
+1、首次进入ListView页面，getView会初始化：可见item数 * 4次？？
+    原因：ListView的布局设置为wrap_content时，绘制时，会不断计算高度，不断刷新。
+2、inflate与RecyclerView的不同？？
+    //item_coupon中设置的宽高无效
+    convertView = inflater.inflate(R.layout.item_coupon, null);
+    //item_coupon中设置的宽高有效
+    convertView = inflater.inflate(R.layout.item_coupon, parent, false);
+    //会报错，ListView上上层的AdapterView中addView抛出异常 也就是说在ListView中不可这么用
+    convertView = inflater.inflate(R.layout.item_coupon, parent, true);
+    参考博客：http://www.tuicool.com/articles/MJFNBfF
 
 main.xml
-2、RelativeLayout会绘制4次，Linearlayout绘制2次
+2、RelativeLayout与Linearlayout绘制性能比较
+   参考博客：http://android.jobbole.com/83636/
+   结论：（1）RelativeLayout会让子View调用2次onMeasure, LinearLayout在有Weight时也会调用2次onMeasure。
+         （2）RelativeLayout的子View如果高度和RelativeLayout不同，则会引发效率问题，当子View很复杂时，
+              这个问题会更加严重。如果可以，尽量使用padding代替margin。
+         （3）在不影响层级深度的情况下，使用Linearlayout或FrameLayout而不是Relativeyout。
