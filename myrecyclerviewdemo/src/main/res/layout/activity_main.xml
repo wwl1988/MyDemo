@@ -10,18 +10,40 @@
     android:paddingTop="@dimen/activity_horizontal_margin"
     tools:context="com.example.wwl.myrecyclerviewdemo.MainActivity">
 
-    <Button
-        android:id="@+id/bt_rv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RecyclerView"/>
 
     <Button
         android:id="@+id/bt_lv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="ListView"/>
+        android:text="ListView单选" />
 
+    <Button
+        android:id="@+id/bt_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="RecyclerView单选" />
+
+
+    <Button
+        android:id="@+id/bt_rv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="RecyclerView基础与练习" />
+
+    <Button
+        android:id="@+id/bt_rv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="RecyclerView网格" />
+
+    <Button
+        android:id="@+id/bt_rv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="RecyclerView瀑布流" />
 
 </LinearLayout>

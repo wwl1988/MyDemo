@@ -9,7 +9,7 @@ ListViewitem
 1、首次进入ListView页面，getView会初始化：可见item数 * 4次？？
     原因：ListView的布局设置为wrap_content时，绘制时，会不断计算高度，不断刷新。
 2、inflate与RecyclerView的不同？？
-    //item_coupon中设置的宽高无效
+    //item_coupon中顶层ViewGroup设置的宽高无效
     convertView = inflater.inflate(R.layout.item_coupon, null);
     //item_coupon中设置的宽高有效
     convertView = inflater.inflate(R.layout.item_coupon, parent, false);
@@ -20,7 +20,16 @@ ListViewitem
 main.xml
 2、RelativeLayout与Linearlayout绘制性能比较
    参考博客：http://android.jobbole.com/83636/
-   结论：（1）RelativeLayout会让子View调用2次onMeasure, LinearLayout在有Weight时也会调用2次onMeasure。
+   结论：（1）RelativeLayout会让子View调用  2次onMeasure, LinearLayout在有Weight时也会调用2次onMeasure。
          （2）RelativeLayout的子View如果高度和RelativeLayout不同，则会引发效率问题，当子View很复杂时，
               这个问题会更加严重。如果可以，尽量使用padding代替margin。
          （3）在不影响层级深度的情况下，使用Linearlayout或FrameLayout而不是Relativeyout。
+
+
+其他：
+1、mDivider.getIntrinsicWidth()和mDivider.getWidth():
+    getWidth() 是实际显示的宽度。
+    getMeasureWidth() 是测量宽度，在布局之前计算出来的。
+    getIntrinsicWidth() 是原有宽度，有时候原有宽度可能很大，但是实际上空间不够，所有效果上并没有那么大，这个方法可以获得原有宽度，可以辅助测量的时候选择合适的展示宽度。
+    getMinimumWidth() 是最小宽度，是XML参数定义里的 minWidth，也是一个辅助测量展示的参数。
+

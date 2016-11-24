@@ -11,6 +11,7 @@ import com.android.debug.hv.ViewServer;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button bt_rv, bt_lv;
+    Button bt_rv2, bt_rv3, bt_rv4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +20,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         bt_rv = (Button) findViewById(R.id.bt_rv);
         bt_lv = (Button) findViewById(R.id.bt_lv);
+        bt_rv2 = (Button) findViewById(R.id.bt_rv2);
+        bt_rv3 = (Button) findViewById(R.id.bt_rv3);
+        bt_rv4 = (Button) findViewById(R.id.bt_rv4);
 
         bt_rv.setOnClickListener(this);
+        bt_rv2.setOnClickListener(this);
+        bt_rv3.setOnClickListener(this);
+        bt_rv4.setOnClickListener(this);
         bt_lv.setOnClickListener(this);
         ViewServer.get(this).addWindow(this);
     }
@@ -32,6 +39,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, MyRecyclerViewActivity.class));
         } else if(id == R.id.bt_lv){
             startActivity(new Intent(this, MyListViewActivity.class));
+        } else if(id == R.id.bt_rv2){
+            startActivity(new Intent(this, MyRecyclerViewActivity2.class));
+        } else if(id == R.id.bt_rv3){
+            startActivity(new Intent(this, MyRecyclerViewActivity3.class));
+        } else if(id == R.id.bt_rv4){
+            startActivity(new Intent(this, MyRecyclerViewActivity4.class));
         }
 
     }
