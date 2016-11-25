@@ -54,7 +54,26 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             @Override
             public void onClick(View v) {
                 if (mSelectPosition != position) {
-//                    //方案一：
+                    //方案一：刷新全部
+//                    mListData.get(position).setSelected(true);
+//                    mListData.get(mSelectPosition).setSelected(false);
+//                    notifyDataSetChanged();
+
+                    //方案二： RV默认会多缓存两级
+                    if(mSelectPosition >= 0){
+                        CouponVH mCouponVH = (CouponVH) mRV.findViewHolderForLayoutPosition(mSelectPosition);
+                        if(mCouponVH != null){
+                            mCouponVH.iv_select.setSelected(false);
+                        } else {
+                            notifyItemChanged(mSelectPosition, false);//强制清除缓存
+                        }
+                        mListData.get(mSelectPosition).setSelected(false);
+                    }
+                    holder.iv_select.setSelected(true);
+                    mSelectPosition = position;
+                    mListData.get(position).setSelected(true);
+
+//                    //方案三：
 //                    if (mSelectPosition >= 0) {
 //                        mListData.get(mSelectPosition).setSelected(false);
 //                        Bundle payloadOld = new Bundle();
@@ -65,23 +84,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 //                    mListData.get(mSelectPosition).setSelected(false);
 //                    Bundle payloadNew = new Bundle();
 //                    payloadNew.putBoolean("KEY_SELECT", true);
-
-
-                    //方案二： RV默认会多缓存两级
-                    if(mSelectPosition >= 0){
-
-                        CouponVH mCouponVH = (CouponVH) mRV.findViewHolderForLayoutPosition(mSelectPosition);
-                        if(mCouponVH != null){
-                            mCouponVH.iv_select.setSelected(false);
-                        } else {
-                            notifyItemChanged(mSelectPosition, false);//强制清除缓存
-                        }
-                        mListData.get(mSelectPosition).setSelected(false);
-                    }
-
-                    holder.iv_select.setSelected(true);
-                    mSelectPosition = position;
-                    mListData.get(position).setSelected(true);
 
                 }
             }
@@ -95,7 +97,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         Log.d("WWL", "onBindViewHolder333333:");
     }
 
-    //    @Override
+//    @Override
 //    public void onBindViewHolder(CouponVH holder, int position, List<Object> payloads) {
 //        if(payloads.isEmpty()){
 //            onBindViewHolder(holder, position);

@@ -60,9 +60,9 @@ public class MyListViewAdapter extends BaseAdapter {
             //item_coupon中设置的宽高无效
 //            convertView = inflater.inflate(R.layout.item_coupon, null);
             //item_coupon中设置的宽高有效
-//            convertView = inflater.inflate(R.layout.item_coupon, parent, false);
+            convertView = inflater.inflate(R.layout.item_coupon, parent, false);
             //会报错，ListView上上层的AdapterView中addView抛出异常
-            convertView = inflater.inflate(R.layout.item_coupon, parent, true);
+//            convertView = inflater.inflate(R.layout.item_coupon, parent, true);
             holder.iv_select = (ImageView) convertView.findViewById(R.id.iv_select);
             holder.tv_counpon_info = (TextView) convertView.findViewById(R.id.tv_coupon_info);
             convertView.setTag(holder);
