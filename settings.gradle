@@ -1,1 +1,1 @@
-include ':app', ':mywatchertablecustom', ':myrecyclerviewdemo', ':viewserver'
+include ':app', ':mywatchertablecustom', ':myrecyclerviewdemo', ':viewserver', ':mycustomview'

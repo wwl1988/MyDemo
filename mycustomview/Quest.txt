@@ -1,0 +1,5 @@
+1、关于onSizeChanged ？
+
+2、关于mLinePaint.setStyle(Paint.Style.STROKE);
+
+3、Path用法详解  setAlpha  FILL 与 FILL_AND_STROKE的区别？
