@@ -35,4 +35,10 @@ public class MyRecyclerViewActivity extends AppCompatActivity {
         return list;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //自定义跳转一：从上到下返回
+        overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom);
+    }
 }

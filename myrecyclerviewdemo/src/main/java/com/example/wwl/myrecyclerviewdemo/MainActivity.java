@@ -1,6 +1,8 @@
 package com.example.wwl.myrecyclerviewdemo;
 
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,12 +37,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.bt_rv){
-            startActivity(new Intent(this, MyRecyclerViewActivity.class));
-        } else if(id == R.id.bt_lv){
+        if(id == R.id.bt_lv){
             startActivity(new Intent(this, MyListViewActivity.class));
+            //默认的跳转方式 从做到又
+        } else if(id == R.id.bt_rv){
+            startActivity(new Intent(this, MyRecyclerViewActivity.class));
+            //自定义跳转一：从下到上出现
+            overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
         } else if(id == R.id.bt_rv2){
-            startActivity(new Intent(this, MyRecyclerViewActivity2.class));
+//            startActivity(new Intent(this, MyRecyclerViewActivity2.class));
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeCustomAnimation(this,
+                    R.anim.slide_in_bottom, R.anim.slide_out_top);
+            ActivityCompat.startActivity(this, new Intent(this, MyRecyclerViewActivity2.class), compat.toBundle());
         } else if(id == R.id.bt_rv3){
             startActivity(new Intent(this, MyRecyclerViewActivity3.class));
         } else if(id == R.id.bt_rv4){
