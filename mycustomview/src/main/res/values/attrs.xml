@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <declare-styleable name="MySesameCreditScoreView">
-        <attr name="center_score_text_size" format="dimension"/>
-        <attr name="center_score_text_color" format="color"/>
-        <attr name="radar_radius" format="dimension"/>
-        <attr name="line_color" format="color"/>
-        <attr name="cover_color" format="color"/>
-        <attr name="title_size" format="dimension"/>
-        <attr name="title_color" format="color"/>
+        <attr name="center_score_text_size" format="dimension" />
+        <attr name="center_score_text_color" format="color" />
+        <attr name="radar_radius" format="dimension" />
+        <attr name="line_color" format="color" />
+        <attr name="cover_color" format="color" />
+        <attr name="title_size" format="dimension" />
+        <attr name="title_color" format="color" />
     </declare-styleable>
 
-    
+
+    <declare-styleable name="MyWatcherTableView">
+        <attr name="coordinate_width" format="dimension" />
+        <attr name="coordinate_color" format="color" />
+        <attr name="coordinate_text_size" format="dimension" />
+        <attr name="circle_radius" format="dimension" />
+        <attr name="circle_color" format="color" />
+        <attr name="broken_line_width" format="dimension" />
+    </declare-styleable>
+
+
 </resources>

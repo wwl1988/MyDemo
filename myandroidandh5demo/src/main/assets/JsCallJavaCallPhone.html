@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Insert title here</title>
+        <script type="text/javascript">
+            function showJson(jsondata){
+                    alert("刘xy是11111111111111");
+                    var jsonobjs = eval(jsondata);
+                    var table = document.getElementById("personTable");
+                    for(var y=0; y<jsonobjs.length; y++){
+                        var tr = table.insertRow(table.rows.length); 
+                        var td1 = tr.insertCell(0);
+                        var td2 = tr.insertCell(1);
+                        td2.align = "center";
+                        td1.innerHTML = "汪威林";
+                        td2.innerHTML = "18600868377";
+                    }
+            }
+            
+        </script>
+    </head>
+    <body onload="javascript:Android.showcontacts()">
+
+    <div align="left">欢迎光临</div>
+
+    <p><img src="ic_launcher.png"></p>
+
+    <table border="0" width="100%" id="personTable" cellspacing="0">
+            <tr>
+                <td width="30%">姓名</td>
+                <td align="center">电话</td>
+            </tr>
+        </table>
+    </body>
+</html>
