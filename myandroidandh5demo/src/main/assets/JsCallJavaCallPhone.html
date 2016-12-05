@@ -5,7 +5,6 @@
         <title>Insert title here</title>
         <script type="text/javascript">
             function showJson(jsondata){
-                    alert("刘xy是11111111111111");
                     var jsonobjs = eval(jsondata);
                     var table = document.getElementById("personTable");
                     for(var y=0; y<jsonobjs.length; y++){
@@ -13,8 +12,8 @@
                         var td1 = tr.insertCell(0);
                         var td2 = tr.insertCell(1);
                         td2.align = "center";
-                        td1.innerHTML = "汪威林";
-                        td2.innerHTML = "18600868377";
+                        td1.innerHTML = jsonobjs[y].name;
+                        td2.innerHTML = "<a href='javascript:Android.call(\""+ jsonobjs[y].phone + "\")'>"+ jsonobjs[y].phone + "</a>";
                     }
             }
             
