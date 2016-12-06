@@ -1,0 +1,5 @@
+1、TextSize和EditSize的默认大小？
+    手机：魅族note3
+    density：3.0
+    TextSize：42px---14sp/dp
+    EditText：54px---18sp/dp
