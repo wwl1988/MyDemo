@@ -20,84 +20,78 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="学习简单的RxJava的流程" />
+            android:text="1、学习简单的RxJava的流程" />
 
         <Button
             android:id="@+id/bt2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--map" />
+            android:text="2、操作符--map" />
 
         <Button
             android:id="@+id/bt3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="RxJava的线程调度" />
+            android:text="3、RxJava的线程调度" />
 
         <Button
             android:id="@+id/bt4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--flatMap" />
+            android:text="4、操作符--flatMap" />
 
         <Button
             android:id="@+id/bt5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--合并" />
+            android:text="5、操作符--合并" />
 
         <Button
             android:id="@+id/bt6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="基于RxJava的Binding" />
+            android:text="6、基于RxJava的Binding" />
 
         <Button
             android:id="@+id/bt7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--filter" />
+            android:text="7、操作符--filter" />
 
         <Button
             android:id="@+id/bt8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--take,doOnNext" />
+            android:text="8、操作符--take,doOnNext" />
 
         <Button
             android:id="@+id/bt9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--Interval、取消订阅" />
+            android:text="9、操作符--Interval、取消订阅" />
 
         <Button
             android:id="@+id/bt10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--toSortedList" />
+            android:text="10、操作符--toSortedList" />
 
         <Button
             android:id="@+id/bt11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="操作符--connect" />
+            android:text="11、操作符--connect" />
 
-        <Button
-            android:id="@+id/bt12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="操作符--" />
 
     </LinearLayout>
 

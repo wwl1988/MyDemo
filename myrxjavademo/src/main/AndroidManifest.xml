@@ -23,7 +23,9 @@
         <activity android:name=".RxBindingActivity" />
         <activity android:name=".RxFilterActivity" />
         <activity android:name=".RxTakeActivity" />
-        <activity android:name=".RxTimerActivity"></activity>
+        <activity android:name=".RxTimerActivity" />
+        <activity android:name=".RxSortActivity" />
+        <activity android:name=".RxConnetActivity" />
     </application>
 
 </manifest>

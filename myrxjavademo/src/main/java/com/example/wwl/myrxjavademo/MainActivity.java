@@ -9,7 +9,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mBT1, mBT2, mBT3, mBT4, mBT5;
-    private Button mBT6, mBT7, mBT8, mBT9, mBT10, mBT11, mBT12;
+    private Button mBT6, mBT7, mBT8, mBT9, mBT10, mBT11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBT9 = (Button) findViewById(R.id.bt9);
         mBT10 = (Button) findViewById(R.id.bt10);
         mBT11 = (Button) findViewById(R.id.bt11);
-        mBT12 = (Button) findViewById(R.id.bt12);
 
         mBT1.setOnClickListener(this);
         mBT2.setOnClickListener(this);
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBT9.setOnClickListener(this);
         mBT10.setOnClickListener(this);
         mBT11.setOnClickListener(this);
-        mBT12.setOnClickListener(this);
 
     }
 
@@ -65,11 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if(id == R.id.bt9){
             startActivity(new Intent(this, RxTimerActivity.class));
         } else if(id == R.id.bt10){
-//            startActivity(new Intent(this, RxMergeActivity.class));
+            startActivity(new Intent(this, RxSortActivity.class));
         } else if(id == R.id.bt11){
-//            startActivity(new Intent(this, RxMergeActivity.class));
-        } else if(id == R.id.bt12){
-//            startActivity(new Intent(this, RxMergeActivity.class));
+            startActivity(new Intent(this, RxConnetActivity.class));
         }
 
     }
