@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<url xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Node
+        key="testGet"
+        expires="0"
+        netType="GET"
+        url="http://192.168.2.100:8080/LocalServer/hello.api"/>
+
+</url>
