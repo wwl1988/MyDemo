@@ -1,1 +1,1 @@
-include ':app', ':myrecyclerviewdemo', ':viewserver', ':mycustomview', ':myandroidandh5demo', ':myrxjavademo', ':mytestdem'
+include ':app', ':myrecyclerviewdemo', ':viewserver', ':mycustomview', ':myandroidandh5demo', ':myrxjavademo', ':mytestdem', ':mymeterialdesign'

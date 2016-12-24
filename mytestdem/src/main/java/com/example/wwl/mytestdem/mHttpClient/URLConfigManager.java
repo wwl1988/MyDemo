@@ -2,7 +2,8 @@ package com.example.wwl.mytestdem.mHttpClient;
 
 import android.content.res.XmlResourceParser;
 
-import com.example.wwl.mycustomhttpclient.R;
+
+import com.example.wwl.mytestdem.R;
 
 import org.xmlpull.v1.XmlPullParserException;
 
