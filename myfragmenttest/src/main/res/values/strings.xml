@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyFragmentTest</string>
+    <string name="press_back_twice">再按一次返回键退出</string>
+    <string name="tips">提示</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_permissions">Permissions</string>
+    <string name="action_dialog">Dialog</string>
+
+    <string name="permission_desc">为了应用可以正常使用，请您点击确认申请权限。</string>
+
+</resources>
