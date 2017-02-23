@@ -1,1 +1,10 @@
-include ':app', ':myrecyclerviewdemo', ':viewserver', ':mycustomview', ':myandroidandh5demo', ':myrxjavademo', ':mytestdem', ':mymeterialdesign', ':myfragmenttest'
+include ':app',
+        ':myrecyclerviewdemo',
+        ':viewserver',
+        ':mycustomview',
+        ':myandroidandh5demo',
+        ':myrxjavademo',
+        ':mytestdem',
+        ':mymeterialdesign',
+        ':myfragmenttest',
+        ':mydbdataapplication'
